@@ -70,7 +70,8 @@ export default function BookingModal({ tutor, isOpen, onClose }: BookingModalPro
               onChange={(e) => setDate(e.target.value)}
               min={new Date().toISOString().split('T')[0]}
               required
-              className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+              aria-label="Select date for session"
+              className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-2 focus:ring-blue-500 focus:outline-none"
             />
           </div>
 
@@ -81,7 +82,8 @@ export default function BookingModal({ tutor, isOpen, onClose }: BookingModalPro
               value={startTime}
               onChange={(e) => setStartTime(e.target.value)}
               required
-              className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+              aria-label="Select start time for session"
+              className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-2 focus:ring-blue-500 focus:outline-none"
             />
           </div>
 
@@ -90,7 +92,8 @@ export default function BookingModal({ tutor, isOpen, onClose }: BookingModalPro
             <select
               value={duration}
               onChange={(e) => setDuration(e.target.value)}
-              className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+              aria-label="Select duration in hours"
+              className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-2 focus:ring-blue-500 focus:outline-none"
             >
               <option value="1">1 hour</option>
               <option value="2">2 hours</option>
@@ -107,14 +110,16 @@ export default function BookingModal({ tutor, isOpen, onClose }: BookingModalPro
             <button
               type="button"
               onClick={onClose}
-              className="px-4 py-2 text-sm font-medium text-gray-700 bg-gray-100 rounded-md hover:bg-gray-200"
+              aria-label="Cancel booking"
+              className="px-4 py-2 text-sm font-medium text-gray-700 bg-gray-100 rounded-md hover:bg-gray-200 focus:ring-2 focus:ring-blue-500 focus:outline-none"
             >
               Cancel
             </button>
             <button
               type="submit"
+              aria-label="Confirm booking"
               disabled={loading}
-              className="px-4 py-2 text-sm font-medium text-white bg-blue-600 rounded-md hover:bg-blue-700 disabled:opacity-50"
+              className="px-4 py-2 text-sm font-medium text-white bg-blue-600 rounded-md hover:bg-blue-700 disabled:opacity-50 focus:ring-2 focus:ring-blue-500 focus:outline-none"
             >
               {loading ? 'Booking...' : 'Confirm Booking'}
             </button>

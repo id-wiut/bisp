@@ -29,12 +29,13 @@ export default function Navbar() {
             </Link>
             {user ? (
               <>
-                <Link href="/dashboard" className="text-gray-600 hover:text-primary font-medium px-3 py-2 rounded-xl transition">
+                <Link href="/dashboard" className="text-gray-600 hover:text-primary font-medium px-3 py-2 rounded-xl transition focus:ring-2 focus:ring-primary focus:outline-none">
                   Dashboard
                 </Link>
                 <button
                   onClick={() => logout()}
-                  className="bg-primary text-white px-4 py-2 rounded-xl font-semibold hover:bg-primary-dark transition shadow-sm"
+                  aria-label="Logout"
+                  className="bg-primary text-white px-4 py-2 rounded-xl font-semibold hover:bg-primary-dark transition shadow-sm focus:ring-2 focus:ring-primary focus:outline-none"
                 >
                   Logout
                 </button>
@@ -46,12 +47,12 @@ export default function Navbar() {
               </>
             ) : (
               <>
-                <Link href="/login" className="text-gray-600 hover:text-primary font-medium px-3 py-2 rounded-xl transition">
+                <Link href="/login" className="text-gray-600 hover:text-primary font-medium px-3 py-2 rounded-xl transition focus:ring-2 focus:ring-primary focus:outline-none">
                   Login
                 </Link>
                 <Link
                   href="/signup"
-                  className="bg-primary text-white px-4 py-2 rounded-xl font-semibold hover:bg-primary-dark transition shadow-sm"
+                  className="bg-primary text-white px-4 py-2 rounded-xl font-semibold hover:bg-primary-dark transition shadow-sm focus:ring-2 focus:ring-primary focus:outline-none"
                 >
                   Sign Up
                 </Link>

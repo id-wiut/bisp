@@ -1,0 +1,30 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // Users: Only the user can read/write their own data
+    match /users/{userId} {
+      allow read, write: if request.auth != null && request.auth.uid == userId;
+    }
+
+    // Tutors: Anyone can read public tutor profiles, only the owner can write
+    match /tutors/{tutorId} {
+      allow read: if true;
+      allow write: if request.auth != null && request.auth.uid == resource.data.userId;
+      allow create: if request.auth != null && request.auth.uid == request.resource.data.userId;
+    }
+
+    // Bookings: Only involved users can read, only student can create, both can update status
+    match /bookings/{bookingId} {
+      allow create: if request.auth != null && request.auth.uid == request.resource.data.studentId;
+      allow read: if request.auth != null && (request.auth.uid == resource.data.studentId || request.auth.uid == resource.data.tutorId);
+      allow update, delete: if request.auth != null && (request.auth.uid == resource.data.studentId || request.auth.uid == resource.data.tutorId);
+    }
+
+    // Contact Requests: Only student can create, student or tutor can read
+    match /contactRequests/{contactId} {
+      allow create: if request.auth != null && request.auth.uid == request.resource.data.studentId;
+      allow read: if request.auth != null && (request.auth.uid == resource.data.studentId || request.auth.uid == resource.data.tutorId);
+      allow update, delete: if false;
+    }
+  }
+} 

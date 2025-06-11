@@ -56,7 +56,8 @@ export default function ContactModal({ tutor, isOpen, onClose }: ContactModalPro
             <p className="text-primary text-lg font-semibold mb-2">Message sent!</p>
             <button
               onClick={onClose}
-              className="mt-4 px-6 py-2 bg-primary text-white rounded-full font-semibold hover:bg-primary-dark transition"
+              aria-label="Close message sent dialog"
+              className="mt-4 px-6 py-2 bg-primary text-white rounded-full font-semibold hover:bg-primary-dark transition focus:ring-2 focus:ring-primary focus:outline-none"
             >
               Close
             </button>
@@ -66,11 +67,12 @@ export default function ContactModal({ tutor, isOpen, onClose }: ContactModalPro
             <div>
               <label className="block text-sm font-medium text-gray-700">Your Message</label>
               <textarea
+                aria-label="Message to tutor"
                 value={message}
                 onChange={e => setMessage(e.target.value)}
                 required
                 rows={4}
-                className="mt-1 block w-full rounded-xl border border-blue-200 bg-blue-50 shadow-sm focus:ring-2 focus:ring-primary focus:border-primary p-3 text-gray-800"
+                className="mt-1 block w-full rounded-xl border border-blue-200 bg-blue-50 shadow-sm focus:ring-2 focus:ring-primary focus:border-primary focus:outline-none p-3 text-gray-800"
                 placeholder="Hi, I am interested in your tutoring services..."
               />
             </div>
@@ -78,15 +80,17 @@ export default function ContactModal({ tutor, isOpen, onClose }: ContactModalPro
             <div className="flex justify-end space-x-3 mt-6">
               <button
                 type="button"
+                aria-label="Cancel message"
                 onClick={onClose}
-                className="px-4 py-2 text-sm font-medium text-gray-700 bg-gray-100 rounded-full hover:bg-gray-200"
+                className="px-4 py-2 text-sm font-medium text-gray-700 bg-gray-100 rounded-full hover:bg-gray-200 focus:ring-2 focus:ring-primary focus:outline-none"
               >
                 Cancel
               </button>
               <button
                 type="submit"
+                aria-label="Send message"
                 disabled={loading}
-                className="px-4 py-2 text-sm font-semibold text-white bg-primary rounded-full hover:bg-primary-dark transition disabled:opacity-50"
+                className="px-4 py-2 text-sm font-semibold text-white bg-primary rounded-full hover:bg-primary-dark transition disabled:opacity-50 focus:ring-2 focus:ring-primary focus:outline-none"
               >
                 {loading ? 'Sending...' : 'Send Message'}
               </button>
